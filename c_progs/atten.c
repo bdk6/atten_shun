@@ -53,6 +53,20 @@
 //     R5 =
 //     R6 =
 
+typedef struct atten
+{
+  double r0;
+  double r1;
+  double r2;
+  double r3;
+  double r4;
+  double r5;
+  double r6;
+} attenuator_t;
+
+attenuator_t calcPi(double r0, double db);
+attenuator_t calcT(double r0, double db);
+attenuator_t calcBridgedT(double r0, double db);
 
 
 int main(int argc, char** argv)
@@ -63,3 +77,25 @@ int main(int argc, char** argv)
 
   return rtn;
 }
+
+attenuator_t calcPi(double r0, double db)
+{
+  attenuator_t rtn;
+
+  return rtn;
+}
+
+attenuator_t calcT(double r0, double db)
+{
+  attenuator_t rtn;
+
+  return rtn;
+}
+
+attenuator_t calcBridgedT(double r0, double db)
+{
+  attenuator_t rtn;
+
+  return rtn;
+}
+
