@@ -52,6 +52,25 @@
 //
 //     R5 =
 //     R6 =
+//
+// From here:
+// https://www.allaboutcircuits.com/tools/bridged-tee-attenuator-calculator/
+// We get R5 = Z0*(10^(db/20 -1)
+//    and R6 = Z0*1/(10^(db/20) + 1)
+//     or R5 = Z0*(N-1)
+//    and R6 = Z0*1/(N+1)
+//    N is 10^(db/20)
+//
+// We also get a different way to draw it which shows the name better
+//
+//                      R5
+//               ------VVV------
+//               |             |
+//       ----------VVV-----VVV----------
+//                Z0    |    Z0
+//                      Z R6
+//                      Z
+//       ---------------|---------------
 
 typedef struct atten
 {
@@ -67,11 +86,24 @@ typedef struct atten
 attenuator_t calcPi(double r0, double db);
 attenuator_t calcT(double r0, double db);
 attenuator_t calcBridgedT(double r0, double db);
+void drawPi(attenuator_t a);
+void drawT(attenuator_t a);
+void drawBridgedT(attenuator_t a);
+double dbToRatio(double db);
 
 
 int main(int argc, char** argv)
 {
   int rtn = 0;
+  double r;
+  r = dbToRatio(10);
+  printf("10 db is %f \n", r);
+  r = dbToRatio(20);
+  printf("20 db is %f \n", r);
+  r = dbToRatio(30);
+  printf("30 db is %f \n", r);
+  r = dbToRatio(60);
+  printf("60 db is %f \n", r);
 
 
 
@@ -99,3 +131,23 @@ attenuator_t calcBridgedT(double r0, double db)
   return rtn;
 }
 
+void drawPi(attenuator_t a)
+{
+}
+
+void drawT(attenuator_t a)
+{
+}
+
+void drawBridgedT(attenuator_t a)
+{
+}
+
+double dbToRatio(double db)
+{
+  double rtn = -1.0;
+  db = fabs(db);  // no negative ATTENUATION
+  rtn = pow(10, db/20.0);
+
+  return rtn;
+}
