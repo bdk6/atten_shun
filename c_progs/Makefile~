@@ -1,0 +1,11 @@
+
+
+
+
+all:	atten_shun
+
+atten_shun:	atten_shun.c
+	gcc -o atten_shun atten_shun.c -lm
+
+clean:
+	rm *.o atten_shun

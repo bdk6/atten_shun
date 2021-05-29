@@ -1,0 +1,42 @@
+//////////////////////////////////////////////////////////////////////////////
+/// @file thermistor.c
+/// @brief Calculates values of temp / resistance for (NTC) thermistors
+/// @copy 2021 William R Cooke Small Time Electronics
+//////////////////////////////////////////////////////////////////////////////
+
+#include <stdio.h>
+#include <math.h>
+
+double calcR(double B, double R, double kelvinRef, double kelvinU);
+
+int main(int argc, char** argv)
+{
+  int rtn = 0;
+
+
+  return rtn;
+}
+
+double calcR(double B, double R, double kelvinRef, double kelvinU)
+{
+  double rtn = 0.0;
+  // B = T2*T1/(T2-T1) * ln(R1/R2)
+  // T1 is ref temp in kelvins
+  // T2 is desired temp in kelvins
+  // R1 is reference temp resistance
+  // R2 is resistance at T2
+
+  // sub params for variables
+  // B = kelvinU * kelvinRef / (kelvinU - kelvinRef) * ln(R/?)
+  // B * (kelvinU - kelvinRef)/(kelvinU * kelvinRef) = ln(R/?)
+  // exp(B*(kelvinU-kelvinRef)/(kelvinU*kelvinRef) = R/?
+  // ? = R/(exp(B*(kelvinU-kelvinRef)/(kelvinU*kelvinRef)))
+
+  double rUnknown = R/(exp(B*(kelvinU-kelvinRef)/(kelvinU*kelvinRef)));
+  rtn = rUnknown;
+			   
+
+
+  return rtn;
+}
+
